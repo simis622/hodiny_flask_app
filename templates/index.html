@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analogové hodiny – čas serveru</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="wrapper">
+    <h1>Čas serveru</h1>
+
+    <!-- data-server-wall = cas serveru (HH:MM:SS) v okamziku vykresleni stranky -->
+    <div id="clock" class="clock" data-server-wall="{{ wall }}">
+      <svg id="clock-svg" viewBox="0 0 200 200" width="340" height="340"
+           role="img" aria-label="Analogové hodiny zobrazující čas serveru">
+        <circle class="face" cx="100" cy="100" r="98"/>
+        <g id="ticks"></g>
+        <g id="numbers"></g>
+        <line id="hand-hour"   class="hand hour" x1="100" y1="108" x2="100" y2="55"/>
+        <line id="hand-minute" class="hand minute" x1="100" y1="112" x2="100" y2="32"/>
+        <line id="hand-second" class="hand second" x1="100" y1="118" x2="100" y2="24"/>
+        <circle class="pin" cx="100" cy="100" r="4"/>
+      </svg>
+    </div>
+
+    <p id="digital" class="digital" aria-live="off">—</p>
+    <p class="hint">Ručičky se řídí aktuálním časem serveru.</p>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
